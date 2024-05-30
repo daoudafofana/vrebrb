@@ -24,7 +24,7 @@ app
 
 
 //initialisation db et connexion db
-sequelize.initDb();
+// sequelize.initDb();
 
 //endpoints
 app.get('/', (req,res) => res.json('hello world 😀'))
