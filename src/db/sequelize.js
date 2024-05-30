@@ -24,32 +24,32 @@ const Pokemon = PokemonModel(sequelize, DataTypes)
 const User = UserModel(sequelize, DataTypes)
 
 //fonction permettant d'init la db
-const initDb = () => {
-    return sequelize.sync({force: true}).then(_ => {
-        pokemons.map(pokemon => {
-            Pokemon.create({
-                name: pokemon.name,
-                hp: pokemon.hp,
-                cp: pokemon.cp,
-                picture: pokemon.picture,
-                types: pokemon.types
-            }).then(pokemon => console.log(pokemon.toJSON()))
-        })
-        bcrypt.hash('test', 10)
-            .then(hash => {
-                User.create( {
-                    username:'daouda',
-                    password: hash
-                }).then(user => {
-                    const message = 'creation user ok'
-                    return {message, data:user}
-                })
-            })
-
-
-        console.log('La base de donnée a bien été initialisée !')
-    })
-}
+// const initDb = () => {
+//     return sequelize.sync({force: true}).then(_ => {
+//         pokemons.map(pokemon => {
+//             Pokemon.create({
+//                 name: pokemon.name,
+//                 hp: pokemon.hp,
+//                 cp: pokemon.cp,
+//                 picture: pokemon.picture,
+//                 types: pokemon.types
+//             }).then(pokemon => console.log(pokemon.toJSON()))
+//         })
+//         bcrypt.hash('test', 10)
+//             .then(hash => {
+//                 User.create( {
+//                     username:'daouda',
+//                     password: hash
+//                 }).then(user => {
+//                     const message = 'creation user ok'
+//                     return {message, data:user}
+//                 })
+//             })
+//
+//
+//         console.log('La base de donnée a bien été initialisée !')
+//     })
+// }
 
 // export de la fonction pour l'utiliser partout
 module.exports = {
