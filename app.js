@@ -22,8 +22,12 @@ const port = process.env.PORT || 3000;
 app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
     .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
-app.use(cors());
-app.options('*', cors());
+    .use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*')
+        res.header('Access-Control-Allow-Methods', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE')
+        res.header('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+        next()
+    })
 
 //initialisation db et connexion db
 // sequelize.initDb();
