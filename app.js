@@ -12,12 +12,15 @@ const sequelize= require("./src/db/sequelize");
 
 //creation d'une instance d'une appli express ( serveur où api rest va tourner)
 const app = express();
+const corsOptions = {
+    credentials: true,
+    origin: '*' // Whitelist the domains you want to allow
+};
 //port sur lequel demarre notre api rest ( process.env.PORT = heroku)
 const port = process.env.PORT || 3000;
 
 
-app.use(cors())
-
+app.use(cors(corsOptions));
 // Middleware: fonction qui s'applique à chaque requete http rentrante et sortante
 app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
