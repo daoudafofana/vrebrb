@@ -11,13 +11,13 @@ const UserModel = require('../models/user')
 const pokemons = require('./mock-pokemon')
 
 //new instance de sequelize
-const sequelize = new Sequelize('pokedex', 'root', '1TestDePassword@', {
-    host: 'localhost',
+const sequelize = new Sequelize('bbd4xkqdzerhnfk24unn', 'u7bf4ri9kiu1ae0g', 'u7bf4ri9kiu1ae0g', {
+    host: 'bbd4xkqdzerhnfk24unn-mysql.services.clever-cloud.com',
     dialect: 'mariadb',
     dialectOptions: {
         timezone: 'Etc/GMT-2'
     },
-    logging: false
+    logging: true
 })
 
 const Pokemon = PokemonModel(sequelize, DataTypes)
