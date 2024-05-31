@@ -23,12 +23,12 @@ app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
     .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
     .use((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500')
-        res.header('Access-Control-Allow-Methods', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE')
-        res.header('Access-Control-Allow-Headers', '*')
-        next()
-    })
-
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Access-Control-Allow-Credentials', true);
+        next();
+    });
 //initialisation db et connexion db
 // sequelize.initDb();
 
