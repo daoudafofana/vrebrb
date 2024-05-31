@@ -9,23 +9,35 @@ const UserModel = require('../models/user')
 
 //import all pokemons
 const pokemons = require('./mock-pokemon')
-
+let sequelize;
 //new instance de sequelize
-const sequelize = new Sequelize('bbd4xkqdzerhnfk24unn', 'u7bf4ri9kiu1ae0g', 'zzFwRG5Cat4R3A4bmmQr', {
-    host: 'bbd4xkqdzerhnfk24unn-mysql.services.clever-cloud.com',
-    dialect: 'mariadb',
-    dialectOptions: {
-        timezone: 'Etc/GMT-2'
-    },
-    logging: true
-})
+if (process.env.NODE_ENV === 'production') {
+    sequelize = new Sequelize('abbw6wgb350rr3lc', 'ua6anuv4e0a5ed95', 'nweb7lzenz0epejk', {
+        host: 'iu51mf0q32fkhfpl.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        dialect: 'mariadb',
+        dialectOptions: {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    })
+} else {
+    sequelize = new Sequelize('pokedex', 'root', '1TestDePassword@', {
+        host: 'localhost',
+        dialect: 'mariadb',
+        dialectOptions: {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    })
+}
+
 
 const Pokemon = PokemonModel(sequelize, DataTypes)
 const User = UserModel(sequelize, DataTypes)
 
 //fonction permettant d'init la db
 const initDb = () => {
-    return sequelize.sync({force: true}).then(_ => {
+    return sequelize.sync().then(_ => {
         pokemons.map(pokemon => {
             Pokemon.create({
                 name: pokemon.name,
