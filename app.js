@@ -18,7 +18,7 @@ const port = process.env.PORT || 3000;
 
 
 const corsOptions = {
-    origin: '*',
+    origin: 'http://127.0.0.1:5500',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Methods'],
 };
