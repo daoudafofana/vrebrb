@@ -22,9 +22,12 @@ const port = process.env.PORT || 3000;
 app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
     .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
-    .use(cors())
+    // .use(cors())
     .use((req, res, next) => {
-        res.header('Access-Control-Allow-Credentials', true);
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Type");
+        next();
 
     })
 
