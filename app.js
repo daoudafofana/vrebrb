@@ -24,11 +24,8 @@ app
     .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
     // .use(cors())
     .use((req, res, next) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Type, content-type");
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,**Authorization**');
         next();
-
     })
 
 //initialisation db et connexion db
