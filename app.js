@@ -1,5 +1,6 @@
 //on recup la dependence express dans node module
 const express = require('express');
+const cors = require('cors');
 
 //autres middleware
 const favicon = require('serve-favicon')
@@ -20,8 +21,8 @@ const port = process.env.PORT || 3000;
 // Middleware: fonction qui s'applique à chaque requete http rentrante et sortante
 app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
-    .use(bodyParser.json()); // en 3 de parser en donnés des requete http entrante et sortante
-
+    .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
+    .use(cors());
 
 //initialisation db et connexion db
 // sequelize.initDb();
