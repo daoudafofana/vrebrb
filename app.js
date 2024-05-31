@@ -23,10 +23,10 @@ app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
     .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
     .use(cors({
-        "origin" : "*",
-        "methods": "GET,HEAD,PUT,PATCH, POST, DELETE",
-        "preflightContinue": false,
-        "optionsSuccessStatus": 204
+        origin : "*",
+        methods: "GET,HEAD,PUT,PATCH, POST, DELETE",
+        preflightContinue: false,
+        optionsSuccessStatus: 204
     }));
 
 //initialisation db et connexion db
