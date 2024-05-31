@@ -28,10 +28,9 @@ app
             allowedHeaders: ['Content-Type', 'Authorization'],
     }))// en 3 de parser en donnés des requete http entrante et sortante
     .use((req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', '*');
-        res.setHeader('Access-Control-Allow-Credentials', true);
+            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+            res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-type,Accept,X-Access-Token,X-Key');
+            res.header('Access-Control-Allow-Origin', '*');
         next();
     });
 //initialisation db et connexion db
