@@ -14,7 +14,7 @@ const sequelize= require("./src/db/sequelize");
 const app = express();
 const corsOptions = {
     credentials: true,
-    origin: '*' // Whitelist the domains you want to allow
+    origin: true // Whitelist the domains you want to allow
 };
 //port sur lequel demarre notre api rest ( process.env.PORT = heroku)
 const port = process.env.PORT || 3000;
