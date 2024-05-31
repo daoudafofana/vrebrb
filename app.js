@@ -16,18 +16,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
-
-const corsOptions = {
-    origin: 'http://127.0.0.1:5500',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Methods'],
-};
+app.use(cors())
 
 // Middleware: fonction qui s'applique à chaque requete http rentrante et sortante
 app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
     .use(bodyParser.json())
-    .use(cors(corsOptions));
 //initialisation db et connexion db
 // sequelize.initDb();
 
