@@ -23,14 +23,14 @@ app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
     .use(bodyParser.json())
     .use(cors({
-            origin: ['*'],
+            origin: ['http://127.0.0.1:5500'],
             methods: ['GET', 'POST', 'PUT', 'DELETE'],
             allowedHeaders: ['Content-Type', 'Authorization'],
     }))// en 3 de parser en donnés des requete http entrante et sortante
     .use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Access-Control-Allow-Headers', '*');
         res.setHeader('Access-Control-Allow-Credentials', true);
         next();
     });
