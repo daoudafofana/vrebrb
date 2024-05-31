@@ -21,7 +21,12 @@ const port = process.env.PORT || 3000;
 // Middleware: fonction qui s'applique à chaque requete http rentrante et sortante
 app
     .use(favicon(__dirname + '/favicon.ico')) // en 1 d'ajouter une favicon
-    .use(bodyParser.json()) // en 3 de parser en donnés des requete http entrante et sortante
+    .use(bodyParser.json())
+    .use(cors({
+            origin: ['*'],
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+            allowedHeaders: ['Content-Type', 'Authorization'],
+    }))// en 3 de parser en donnés des requete http entrante et sortante
     .use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
